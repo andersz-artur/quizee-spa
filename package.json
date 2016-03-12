@@ -1,7 +1,7 @@
 {
   "name": "quizee-spa",
-  "version": "0.0.0",
-  "description": "Small description for quizee-spa goes here",
+  "version": "0.0.1",
+  "description": "Quiz application build with Ember",
   "private": true,
   "directories": {
     "doc": "doc",
