@@ -13,5 +13,7 @@
           {{/each}}
         </fieldset>
     </form>
+    <button class="app-box__next" {{action "nextQuestion"}}>Next<span class="next-icon">{{fa-icon "chevron-right"}}</span></button>
+    <button class="app-box__back" {{action "previousQuestion"}}><span class="back-icon">{{fa-icon "chevron-left"}}</span></button>
 </div>
 {{yield}}
