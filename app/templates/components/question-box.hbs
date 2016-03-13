@@ -1,0 +1,17 @@
+<h1 class="app-box__question">{{currentQuestion.question}}</h1>
+<div class="answer-box">
+    <form>
+        <fieldset id="quiz-answers">
+          {{#each currentQuestion.choices as |choice|}}
+            <label class="answer-box__label">
+              <input type="radio" class="answer-box__option" name="answer">
+              {{choice}}
+              <span class="label-icon">
+                {{fa-icon "check-circle-o"}}
+              </span>
+            </label>
+          {{/each}}
+        </fieldset>
+    </form>
+</div>
+{{yield}}
