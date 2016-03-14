@@ -7,14 +7,18 @@ export default Ember.Component.extend({
     return questions.findBy('id', this.get('currentQuestionId'));
   }),
   didRender() {
-   this.$().hide().fadeIn(800); 
+   this.$().hide().fadeIn(800);
   },
   actions: {
     nextQuestion() {
-      this.incrementProperty('currentQuestionId');
+      if (this.get('currentQuestionId') < this.get('questions').length) {
+        this.incrementProperty('currentQuestionId');
+      }
     },
     previousQuestion() {
-      this.decrementProperty('currentQuestionId');
+      if (this.get('currentQuestionId') > 1) {
+        this.decrementProperty('currentQuestionId');
+      }
     }
   }
 });
