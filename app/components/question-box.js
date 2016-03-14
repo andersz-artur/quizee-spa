@@ -6,6 +6,9 @@ export default Ember.Component.extend({
     let questions = this.get('questions');
     return questions.findBy('id', this.get('currentQuestionId'));
   }),
+  didRender() {
+   this.$().hide().fadeIn(800); 
+  },
   actions: {
     nextQuestion() {
       this.incrementProperty('currentQuestionId');
