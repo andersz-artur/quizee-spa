@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   currentQuestionId: 1,
   userChoicesTable: [],
   selectedAnswerId: -1,
-  userPoints: 0,
+  userResult: 0,
   isAnswerCorrect: Ember.computed('selectedAnswerId', function() {
     return this.get('currentQuestion').correctAnswer === this.get('selectedAnswerId');
   }),
@@ -31,10 +31,15 @@ export default Ember.Component.extend({
         this.incrementProperty('currentQuestionId');
         this.set('selectedAnswerId', -1)
       } else {
-        var userAnswers = this.get('userChoicesTable');
-        userAnswers.forEach(function(element, index,) {
-          console.log(element);
+        let userAnswers = this.get('userChoicesTable');
+        let questions = this.get('questions');
+        let result = 0;
+        userAnswers.forEach(function(element, index) {
+          if (questions[index].correctAnswer === element) {
+            result++;
+          }
         });
+        this.set('userResult', result);
       }
     },
     previousQuestion() {
