@@ -25,7 +25,6 @@ export default Ember.Component.extend({
       }
 
       this.get('userChoicesTable')[this.get('currentQuestionId') - 1] = this.get('selectedAnswerId');
-      console.log(this.get('userChoicesTable'));
 
       if (this.get('currentQuestionId') < this.get('questions').length) {
         this.$().hide().fadeIn(800);
@@ -52,7 +51,6 @@ export default Ember.Component.extend({
     },
     selectAnswer() {
       this.set('selectedAnswerId', parseInt(Ember.$(window.event.target).prop('id'), 10));
-      console.log(this.get('isAnswerCorrect'))
     }
   }
 });

@@ -23,12 +23,5 @@
 {{/unless}}
 
 {{#if isFinished}}
-  <div class="app-box__result">
-    <h1 class="app-box__result__header">
-      Your score is <span class="highlight">{{userResult}}</span> out of {{questions.length}}
-    </h1>
-    <button class="app-box__result__button">Try again</button>
-  </div>
+  {{result-page result=userResult total=questions.length}}
 {{/if}}
-
-{{yield}}
