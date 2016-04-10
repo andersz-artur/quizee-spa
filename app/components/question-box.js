@@ -10,6 +10,10 @@ export default Ember.Component.extend({
   }),
   currentQuestion: Ember.computed('currentQuestionId', function() {
     let questions = this.get('questions');
+    let userAnswer = this.get('userChoicesTable')[this.get('currentQuestionId') - 1];
+    if (userAnswer) {
+      this.set('selectedAnswerId', userAnswer)
+    }
     return questions.findBy('id', this.get('currentQuestionId'));
   }),
   actions: {
