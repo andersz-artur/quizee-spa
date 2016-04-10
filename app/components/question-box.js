@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   userChoicesTable: [],
   selectedAnswerId: -1,
   userResult: 0,
+  isFinished: false,
   isAnswerCorrect: Ember.computed('selectedAnswerId', function() {
     return this.get('currentQuestion').correctAnswer === this.get('selectedAnswerId');
   }),
@@ -40,6 +41,7 @@ export default Ember.Component.extend({
           }
         });
         this.set('userResult', result);
+        this.set('isFinished', true);
       }
     },
     previousQuestion() {
