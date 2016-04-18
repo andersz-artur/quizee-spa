@@ -13,7 +13,7 @@ export default Ember.Component.extend({
     let questions = this.get('questions');
     let userAnswer = this.get('userChoicesTable')[this.get('currentQuestionId') - 1];
     if (userAnswer) {
-      this.set('selectedAnswerId', userAnswer)
+      this.set('selectedAnswerId', userAnswer);
     }
     return questions.findBy('id', this.get('currentQuestionId'));
   }),
@@ -29,7 +29,7 @@ export default Ember.Component.extend({
       if (this.get('currentQuestionId') < this.get('questions').length) {
         this.$().hide().fadeIn(800);
         this.incrementProperty('currentQuestionId');
-        this.set('selectedAnswerId', -1)
+        this.set('selectedAnswerId', -1);
       } else {
         let userAnswers = this.get('userChoicesTable');
         let questions = this.get('questions');
