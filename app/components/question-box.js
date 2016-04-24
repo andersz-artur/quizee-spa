@@ -10,12 +10,11 @@ export default Ember.Component.extend({
     return this.get('currentQuestion').correctAnswer === this.get('selectedAnswerId');
   }),
   currentQuestion: Ember.computed('currentQuestionId', function() {
-    let questions = this.get('questions');
     let userAnswer = this.get('userChoicesTable')[this.get('currentQuestionId') - 1];
     if (userAnswer) {
       this.set('selectedAnswerId', userAnswer);
     }
-    return questions.findBy('id', this.get('currentQuestionId'));
+    return this.get('questions').findBy('id', this.get('currentQuestionId').toString());;
   }),
   actions: {
     nextQuestion() {
@@ -26,7 +25,7 @@ export default Ember.Component.extend({
 
       this.get('userChoicesTable')[this.get('currentQuestionId') - 1] = this.get('selectedAnswerId');
 
-      if (this.get('currentQuestionId') < this.get('questions').length) {
+      if (this.get('currentQuestionId') < this.get('questions').get('length')) {
         this.$().hide().fadeIn(800);
         this.incrementProperty('currentQuestionId');
         this.set('selectedAnswerId', -1);
@@ -35,7 +34,7 @@ export default Ember.Component.extend({
         let questions = this.get('questions');
         let result = 0;
         userAnswers.forEach(function(element, index) {
-          if (questions[index].correctAnswer === element) {
+          if (questions.findBy('id', (index + 1).toString()).get('correctAnswer') === element) {
             result++;
           }
         });
