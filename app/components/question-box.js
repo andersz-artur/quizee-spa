@@ -14,7 +14,7 @@ export default Ember.Component.extend({
     if (userAnswer) {
       this.set('selectedAnswerId', userAnswer);
     }
-    return this.get('questions').findBy('id', this.get('currentQuestionId').toString());;
+    return this.get('questions').findBy('id', this.get('currentQuestionId').toString());
   }),
   actions: {
     nextQuestion() {
